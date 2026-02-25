@@ -1,8 +1,10 @@
-package model
+package main.model
 
-import util.Calculadora
+import main.util.Calculadora
 import java.io.Serializable
 import javax.swing.ImageIcon
+import java.awt.image.BufferedImage
+import javax.imageio.ImageIO
 
 /**
  * La classe CharacterMarioKart ha de ser Serializable per a poder exportar els seus objectes a fitxer binari
@@ -275,8 +277,11 @@ class CharacterMarioKart : Serializable {
      * Crea una icona a partir de la imatge
      */
     fun getImageIcon(): ImageIcon {
-        val resource = this::class.java.classLoader.getResource(this.picture)
-        return if (resource != null) ImageIcon(resource) else ImageIcon()
+        val stream = this::class.java.getResourceAsStream("/" + this.picture)
+            ?: error("No s'ha trobat el recurs: /${this.picture}")
+
+        val bufferedImage: BufferedImage = ImageIO.read(stream)
+        return ImageIcon(bufferedImage)
     }
 
     override fun toString(): String {

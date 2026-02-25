@@ -1,5 +1,6 @@
-import controller.*
-import model.*
+import main.controller.crearPersonatges
+import main.controller.mostrarPersonatges
+import main.model.*
 
 fun main(){
     var llistaPersonatges: MutableList<CharacterMarioKart> = mutableListOf()

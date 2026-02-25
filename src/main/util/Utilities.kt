@@ -1,11 +1,11 @@
-package util
+package main.util
 
 import java.util.*
 
 val scan: Scanner = Scanner(System.`in`)
 
 /**
- * This method can be used to read a String word value from the user through keyboard using java.util.Scanner
+ * This method can be used to read a String word value from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -35,7 +35,7 @@ fun readWord(pMessageIn: String
 }
 
 /**
- * This method can be used to read a String sentence from the user through keyboard using java.util.Scanner
+ * This method can be used to read a String sentence from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -64,7 +64,7 @@ fun readSentence(pMessageIn: String
 }
 
 /**
- * This method can be used to read a Char value from the user through keyboard using java.util.Scanner
+ * This method can be used to read a Char value from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -95,7 +95,7 @@ fun readChar(pMessageIn: String
 }
 
 /**
- * This method can be used to read a Char value from the user through keyboard using java.util.Scanner. It can force the output Char to be lower or uppercase
+ * This method can be used to read a Char value from the user through keyboard using java.main.util.Scanner. It can force the output Char to be lower or uppercase
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -128,7 +128,7 @@ fun readChar(pMessageIn: String
 }
 
 /**
- * This method can be used to read a Boolean value from the user through keyboard using java.util.Scanner
+ * This method can be used to read a Boolean value from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -158,7 +158,7 @@ fun readBoolean(pMessageIn: String
 }
 
 /**
- * This method can be used to read an Int value from the user through keyboard using java.util.Scanner
+ * This method can be used to read an Int value from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -188,7 +188,7 @@ fun readInt(pMessageIn: String
 }
 
 /**
- * This method can be used to read an Int value from the user through keyboard using java.util.Scanner in within a range
+ * This method can be used to read an Int value from the user through keyboard using java.main.util.Scanner in within a range
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -229,7 +229,7 @@ fun readInt(pMessageIn: String
 }
 
 /**
- * This method can be used to read a Float value from the user through keyboard using java.util.Scanner
+ * This method can be used to read a Float value from the user through keyboard using java.main.util.Scanner
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
@@ -258,7 +258,7 @@ fun readFloat(pMessageIn: String
 }
 
 /**
- * This method can be used to read a Float value from the user through keyboard using java.util.Scanner in within a range
+ * This method can be used to read a Float value from the user through keyboard using java.main.util.Scanner in within a range
  * @author raimon.izard
  * @since 15/12/2023
  * @param pMessageIn Input message to be shown to the user
