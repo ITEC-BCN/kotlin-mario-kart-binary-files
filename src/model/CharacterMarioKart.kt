@@ -1,9 +1,13 @@
 package main.model
 
 import main.util.Calculadora
+import java.awt.Graphics2D
+import java.awt.Image
 import java.io.Serializable
 import javax.swing.ImageIcon
 import java.awt.image.BufferedImage
+import java.io.File
+import java.net.URL
 import javax.imageio.ImageIO
 
 /**
@@ -277,12 +281,54 @@ class CharacterMarioKart : Serializable {
      * Crea una icona a partir de la imatge
      */
     fun getImageIcon(): ImageIcon {
-        val stream = this::class.java.getResourceAsStream("/" + this.picture)
+        val file = File(this.picture)
+        if (!file.exists()) {
+            throw RuntimeException("No s'ha trobat la imatge: ${this.picture}")
+        }
+        return ImageIcon(file.absolutePath)
+    }
+
+    fun getBufferedImage(): BufferedImage {
+        // Usa getResource amb / inicial per indicar "arrel del classpath"
+        val resource = this::class.java.getResource("/" + this.picture)
+            ?: error("No s'ha trobat el recurs: /${this.picture}")
+        return ImageIO.read(resource)
+    }
+
+    fun getScaledImage(width: Int, height: Int): ImageIcon {
+        // resource ja existeix dins del classpath
+        val resource: URL = this::class.java.getResource("/" + this.picture)
             ?: error("No s'ha trobat el recurs: /${this.picture}")
 
-        val bufferedImage: BufferedImage = ImageIO.read(stream)
-        return ImageIcon(bufferedImage)
+        println("DEBUG: resource for ${this.name} = $resource")
+
+        // Carrega la imatge completament
+        val original: BufferedImage = ImageIO.read(resource)
+
+        // Escala sincrònicament
+        val scaled = BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
+        val g2d: Graphics2D = scaled.createGraphics()
+        g2d.drawImage(original, 0, 0, width, height, null)
+        g2d.dispose()
+
+        return ImageIcon(scaled)
     }
+
+    fun getScaledImageIcon(width: Int, height: Int): ImageIcon {
+        // 1. Agafem la URL de la imatge dins del classpath
+        val resource = this::class.java.getResource("/" + this.picture)
+            ?: error("No s'ha trobat el recurs: /${this.picture}")
+
+        // 2. Creem l'ImageIcon directament (ja carrega la imatge)
+        val icon = ImageIcon(resource)
+
+        // 3. Escalem sincrònicament l'Image que hi ha dins l'Icon
+        val img = icon.image.getScaledInstance(width, height, Image.SCALE_SMOOTH)
+
+        // 4. Retornem un nou ImageIcon amb la imatge escalada
+        return ImageIcon(img)
+    }
+
 
     override fun toString(): String {
         return """
