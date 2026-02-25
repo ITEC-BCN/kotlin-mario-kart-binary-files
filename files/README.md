@@ -1,0 +1,1 @@
+Aquí haurem de crear l'arxiu binari personatges.bin que contindrà els obejctes serialitzats.
